@@ -1,0 +1,133 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #fff;
+    color: #800020;
+    padding: 20px;
+    text-align: center;
+    top: 20px;;
+    position: relative;
+    margin-bottom: 0px;
+    margin-left: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-box{
+    background-color: #0693e3;
+    height: 20px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+
+
+.logo {
+    width: 180px;
+    height: 180px;
+    margin-right: 20px; 
+    top: px;
+    left: px; 
+}
+
+.header-text{
+    flex: 1;
+    margin-left: 20px;
+}
+
+ /* Custom font for header */
+ .header h1 {
+    font-family:'Roboto', cursive;
+    margin: 0 auto;
+    font-size: 80px;
+    line-height: 1.2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-30%, -50%);
+    text-align: center;
+    top: 50px;
+      
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 50px;
+}
+
+nav ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+main {
+    padding: 20px;
+}
+
+
+
+/* Research theme section */
+.research-theme {
+    margin-bottom: 20px;
+    padding-bottom: 0;
+}
+
+.research-theme h2 {
+    position: absolute;
+    margin-top: -20px;
+    font-family: "Roboto", cursive;
+    font-size: 40px;
+    padding-top: 5px;
+    transform: translateX(-50%);
+    left: 50%;
+
+}    
+
+.research-theme h3 {
+    padding-top: 45px;
+    margin-top: 2px;
+    color: #333;
+    font-size: 20px;
+}
+
+.research-theme em {
+    font-style: italic;
+}
+
+.research-theme p {
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    margin-top: 80px;
+    padding: 1px 0;
+    background-color: #333;
+    color: #fff;
+    font-size: 12px;
+    width: 100%;
+    height: -30px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+}

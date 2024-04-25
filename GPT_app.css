@@ -1,0 +1,145 @@
+/* styles.css */
+
+/* Reset default margin and padding */
+body, h1, h2, h3, h4, h5, h6, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set body font and background */
+body {
+    font-family: "Open Sans", sans-serif;
+    background-size: cover;
+    background-position: fixed;
+    background-color: rgba(255, 255, 255, 200);
+    color: blue;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Header styles */
+header {
+    background-color: #fff;
+    color: #800020;
+    padding: 5px;
+    text-align: left;
+    width: auto;
+    position: relative;
+    margin-bottom: 0px;
+    margin-left: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-box{
+    background-color: #0693e3;
+    height: 20px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.logo {
+    width: 180px;
+    height: 180px;
+    position: relative;
+    top: 5px;
+    left: 1px;
+}
+
+.header-text{
+    margin-left: 200px;
+    display: incline-block;
+    vertical-align: middle;
+    top: 10%;
+    left: 50;
+    font-size: 200px;
+}
+
+ /* Custom font for header */
+.header h1 {
+    font-family:'Roboto', cursive;
+    margin: 0 auto;
+    font-size: 80px;
+    line-height: 1.2;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-30%, -50%);
+      
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 50px;
+}
+
+nav ul li a {
+    color: #000000;
+    text-decoration: none;
+    font-size: 20px;
+
+}
+
+
+/* Main section styles */
+main {
+    background-size: cover;
+    background-position: center top;
+    padding: 0;
+    height: 120vh;
+    position: relative;
+    left: 0;
+    right: 0;
+
+    
+}
+
+section {
+    background-color: transparent;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+section h1 {
+    color: #ffff;
+    margin-bottom: 10px;
+    font-size: 50px;
+    font-weight: 500px;
+    text-align: center;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #0693e3;
+    font-size: 80px;
+    margin-top: 10%;
+    color: orange;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    margin-top: 100px;
+    padding: 10px 0;
+    background-color: #333;
+    color: #fff;
+    font-size: 15px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+}
