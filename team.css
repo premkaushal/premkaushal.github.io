@@ -86,6 +86,20 @@ main {
     display: flex;
     text-align: center;
     margin-bottom: 20px;
+    font-size: 28px;
+    margin-left: 790px;
+}
+
+.team-members h4 {
+    display: left;
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 22px;
+    padding-left: 0;
+}
+
+.team-members li {
+    font-size: 18px;
 }
 
 .member-info {
