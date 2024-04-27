@@ -5,12 +5,13 @@ body {
     padding: 0;
 }
 
+/* Header styles */
 header {
     background-color: #fff;
     color: #800020;
-    padding: 20px;
-    text-align: center;
-    top: 20px;;
+    padding: 5px;
+    text-align: left;
+    width: auto;
     position: relative;
     margin-bottom: 0px;
     margin-left: 100px;
@@ -29,15 +30,14 @@ header {
     right: 0;
 }
 
-
-
 .logo {
     width: 180px;
     height: 180px;
-    margin-right: 20px; 
-    top: px;
-    left: px; 
+    position: relative;
+    top: 18px;
+    left: 1px;
 }
+
 
 .header-text{
     flex: 1;
@@ -90,10 +90,9 @@ main {
 
 .research-theme h2 {
     position: absolute;
-    margin-top: -20px;
-    font-family: "Roboto", cursive;
-    font-size: 40px;
-    padding-top: 5px;
+    margin-top: -40px;
+    font-size: 45px;
+    padding-top: 10px;
     transform: translateX(-50%);
     left: 50%;
 
@@ -101,9 +100,9 @@ main {
 
 .research-theme h3 {
     padding-top: 45px;
-    margin-top: 2px;
+    margin-top: 18px;
     color: #333;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .research-theme em {
@@ -112,7 +111,7 @@ main {
 
 .research-theme p {
     margin-bottom: 10px;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 /* Footer styles */
