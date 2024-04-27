@@ -90,7 +90,8 @@ main {
 
 .member-info {
     flex: 1.5;
-    padding: 20px;
+    padding: 30px;
+    font-size: 20px;
 }
 
 .member-info p {
