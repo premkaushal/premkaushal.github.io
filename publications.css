@@ -5,13 +5,18 @@ body {
     padding: 0;
 }
 
+/* Header styles */
 header {
-    background-color: white;
-    color: #ffffff;
-    padding: 20px;
-    text-align: center;
-    top: 20px;
+    background-color: #fff;
+    color: #800020;
+    padding: 5px;
+    text-align: left;
+    width: auto;
+    position: relative;
+    margin-bottom: 0px;
+    margin-left: 100px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -28,8 +33,11 @@ header {
 .logo {
     width: 180px;
     height: 180px;
-    margin-right: 20px; /* Add space between logo and text */
+    position: relative;
+    top: 20px;
+    left: 1px;
 }
+
 
 .header-text{
     flex: 1;
@@ -75,12 +83,12 @@ main {
 
 .publications h2 {
     position: absolute;
-    margin-top: -20px;
-    font-family: "Roboto", cursive;
-    font-size: 40px;
-    padding-top: 5px;
+    margin-top: -40px;
+    font-size: 45px;
+    padding-top: 10px;
     transform: translateX(-50%);
     left: 50%;
+    
 }
 
 .publications ul {
@@ -119,7 +127,7 @@ main {
 .publications p {
     color: #666;
     margin: 3px 2px;
-    font-size: 18px;
+    font-size: 16px;
     margin-left: 20px;
 }
 
