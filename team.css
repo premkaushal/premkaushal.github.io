@@ -6,12 +6,16 @@ body {
 }
 
 header {
-    background-color: white;
-    color: #ffffff;
-    padding: 20px;
-    text-align: center;
-    top: 20px;
+    background-color: #fff;
+    color: #800020;
+    padding: 5px;
+    text-align: left;
+    width: auto;
+    position: relative;
+    margin-bottom: 0px;
+    margin-left: 100px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -29,7 +33,9 @@ header {
 .logo {
     width: 180px;
     height: 180px;
-    margin-right: 20px; /* Add space between logo and text */
+    position: relative;
+    top: 18px;
+    left: 1px;
 }
 
 .header-text{
@@ -73,6 +79,12 @@ main {
 .team-member {
     display: flex;
     align-items: center;
+    margin-bottom: 20px;
+}
+
+.team-members h3 {
+    display: flex;
+    text-align: center;
     margin-bottom: 20px;
 }
 
