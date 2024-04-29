@@ -6,23 +6,20 @@
 
 <header>
   <div class=" top-box"></div>       
-  <img src="SBTR-logo.png" alt="PSK_logo" class="logo">
+  <img src="/home/prem/Documents/Demo/website/SBTR-logo.png" alt="PSK_logo" class="logo">
   <div class="header-text"></div>
   <nav>
       <ul>
-          <li><a href="index.html"><u>Home</u></a></li>
+          <li><a href="homepage.html"><u>Home</u></a></li>
           <li><a href="res_focus.html"><u>Research Focus</u></a></li>
           <li><a href="publications.html"><u>Publications</u></a></li>
-          <li><a href="sc-out.html"><u>Scientific Outreach</u></a></li>
+          <li><a href="sc-out.html"><u>Science Outreach</u></a></li>
           <li><a href="team.html"><u>Research Team</u></a></li>
           <li><a href="gallery.html"><u>Gallery</u></a></li>
           <li><a href="contact-us.html"><u>Join/Contact Us!</u></a></li>
       </ul>
   </nav>
 </header>
-
-
-
 
 <style>
 /* Header styles */
@@ -194,10 +191,60 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-
 }
+
+.divider {
+    height: 50px;
+    background-color: #ccc; /* Adjust the color of the divider */
+    margin-bottom: 18px; /* Adjust the space between the divider and the images */
+    position: relative; /* Set position relative for proper centering */  
+}
+
+h1 {
+    text-align: center; /* Center align the heading */
+    position: absolute; /* Position the heading relative to the divider */
+    top: 135.6%; /* Position the heading vertically centered */
+    left: 50%; /* Position the heading horizontally centered */
+    transform: translate(-50%, -50%); /* Center the heading precisely */
+    margin: 0; /* Remove any default margins */
+    z-index: 2; /* Set z-index to bring the heading to the front */
+  }
+
+  /* Container for images */
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping to next line if necessary */
+    margin-top: 1%;
+    padding-bottom: 20px;
+  }
+  
+  /* Style for each image wrapper */
+  .image-wrapper {
+    flex: 1 0 30%;
+    margin: 10px; /* Adjust spacing between images */
+    text-align: center; /* Center align the content */
+  }
+  
+  /* Style for images */
+  .image-wrapper img {
+    width: 100%; /* Ensure all images have the same width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Optional: Add some border-radius for aesthetics */
+  }
+  
+  .image-wrapper p{
+    font-size: 20px;
+    margin-bottom: 1%;
+  }
+
+  .date {
+    margin-top: 5px; /* Adjust spacing between image and date */
+    font-size: 14px; /* Adjust the font size of the date */
+    padding-bottom: 3%;
+  }
   
 
+  
 
 </style>
 </head>
@@ -207,46 +254,48 @@ footer {
 
 <div class="mySlides fade">
   <div class="numbertext">1 / 12</div>
-  <img src="IMG_1.jpg" style="width:100%">
+  <img src="/home/prem/Documents/Demo/website/IMG_1.jpg" style="width:100%">
   
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">2 / 12</div>
-  <img src="IMG_2.jpg" style="width:100%">
+  <img src="/home/prem/Documents/Demo/website/IMG_2.jpg" style="width:100%">
  
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">3 / 12</div>
-  <img src="IMG_3.jpg" style="width:100%">
+  <img src="/home/prem/Documents/Demo/website/IMG_3.jpg" style="width:100%">
  
 </div>
     
     <div class="mySlides fade">
   <div class="numbertext">4/ 12</div>
-  <img src="IMG_17.jpg" style="width:100%">
+  <img src="/home/prem/Documents/Demo/website/IMG_17.jpg" style="width:100%">
  
 </div>
     <div class="mySlides fade">
   <div class="numbertext">5/ 12</div>
-  <img src="IMG_5.jpg" style="width:100%">
+  <img src="/home/prem/Documents/Demo/website/IMG_5.jpg" style="width:100%">
   
 </div>
     <div class="mySlides fade">
   <div class="numbertext">6/ 12</div>
-  <img src="IMG_6.jpg" style="width:100%">
+  <img src="/home/prem/Documents/Demo/website/IMG_6.jpg" style="width:100%">
  
 </div>
     <div class="mySlides fade">
   <div class="numbertext">7/ 12</div>
-  <img src="IMG_7.jpg" style="width:100%">
+  <img src="/home/prem/Documents/Demo/website/IMG_7.jpg" style="width:100%">
   
 </div>
     <div class="mySlides fade">
   <div class="numbertext">8/ 12</div>
-  <img src="IMG_8.jpg" style="width:100%">
+  <img src="/home/prem/Documents/Demo/website/IMG_8.jpg" style="width:100%">
  
+</div>
+
 </div>
 
 <a class="prev" onclick="plusSlides(-1)">❮</a>
@@ -266,6 +315,27 @@ footer {
     <span class="dot" onclick="currentSlide(8)"></span> 
     <span class="dot" onclick="currentSlide(9)"></span> 
 </div>
+
+<h1>Lab Visits</h1>
+<div class="divider"></div>
+     <div class="container">
+      <div class="image-wrapper">
+      <img src="Prof_1.jpg" alt="Lab Visit 1">
+      <p><strong>Prof. Joel L. Sussman</strong></p>
+      <p class="date">04th-Oct-2023</p>
+    </div>
+    <div class="image-wrapper">
+      <img src="Prof_B.jpg" alt="Lab Visit 2">
+      <p><strong>Prof. P. Balaram</strong></p>
+      <p class="date">13th-Dec-2023</p>
+    </div>
+    <div class="image-wrapper">
+      <img src="Prof_U.jpg" alt="Lab Visit 3">
+      <p><strong>Prof. Utpal Nath</strong></p>
+      <p class="date">19 April 2024</p>
+    </div>
+  </div>
+  
 
 <script>
 let slideIndex = 1;
@@ -294,6 +364,7 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
 }
+
 </script>
 <footer>
   <p>&copy; 2024 Structural Biology and Translation Regulation Research Lab</p>
