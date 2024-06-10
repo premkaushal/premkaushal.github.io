@@ -3,108 +3,391 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery Page</title>
-    <link rel="stylesheet" href="sc-out.css">
+    <title>The Kaushal Lab</title>
+    <style>
+        /* Reset default margin and padding */
+        body, h1, h2, h3, h4, h5, p, ul, li {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Set body font and background */
+        body {
+            font-family: "Open Sans", sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #fff;
+            padding: 1.3% 0.8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 100%;
+            z-index: 10;
+            position: fixed;
+            top: 0;
+            transition: padding 0.3s ease;
+        }
+
+        .header-shrink {
+            padding: 0.1% 0.5%;
+        }
+
+        .header-shrink .logo {
+            width: 5%;
+        }
+
+        .top-box {
+            background-color: #0693e3;
+            height: 20px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .logo {
+            width: 150px;
+            height: auto;
+            transition: width 0.3s ease;
+        }
+
+        nav {
+            position: relative;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 5px 10px;
+        }
+
+        .nav-links a:hover {
+            background-color: #0693e3;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            height: 3px;
+            width: 25px;
+            background-color: #333;
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: -100%;
+                background-color: #fff;
+                transition: 0.5s;
+            }
+
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                width: 100%;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        main {
+            padding: 1%;
+        }
+
+        .gallery {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            top: 50px;
+        }
+
+        .image-row2 {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+            width: calc(50% - 20px); /* Two images in a row with some margin */
+            margin: 10px;
+            position: relative;
+            margin-top: 50px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-container:hover img {
+            transform: scale(1.1); /* Zoom effect */
+        }
+
+        .image-container1 {
+            width: calc(50% - 10px); /* Two images in a row with some margin */
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+            margin: 10px;
+        }
+
+        .image-container1 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .image-container1:hover img {
+            transform: scale(1.1); /* Zoom effect */
+        }
+
+        .description p {
+            position: relative;
+            bottom: 0;
+            left: -20%;
+            width: 155%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            box-sizing: border-box;
+            box-shadow: lightslategray;
+            border-radius: 4px;
+            font-size: 22px;
+        }
+
+        .gallery1 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-auto-rows: 500px; /* Set the row height */
+            gap: 10px; /* Set the gap between images */
+            padding: 10px; /* Add padding around the gallery */
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Maintain aspect ratio and cover the entire cell */
+            border-radius: 5px; /* Add rounded corners to images */
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1); /* Zoom effect on hover */
+        }
+
+        .image-row {
+            display: flex;
+            position: relative;
+        }
+
+        .image-row img {
+            width: 200px; /* Adjust the width of the compressed images */
+            height: auto;
+            margin-right: 10px; /* Add spacing between images */
+        }
+        /* Footer styles */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            font-size: 15px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+                /* Responsive styles for JavaScript adjustment */
+                .mobile-nav ul {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .mobile-nav ul li {
+            margin-bottom: 10px;
+        }
+
+        .mobile-header-text {
+            font-size: 1.2em;
+        }
+
+        #research_focus {
+            margin-top: 160px; /* Adjust this value as needed based on header height */
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class=" top-box"></div>       
+        <div class="top-box"></div>
         <img src="SBTR-logo.png" alt="PSK_logo" class="logo">
-        <div class="header-text"></div>
+        <div class="header-text">
+            <h1>The Kaushal Lab</h1>
+        </div>
         <nav>
-            <ul>
-                <li><a href="index.html"><u>Home</u></a></li>
-                <li><a href="res_focus.html" class="active"><u>Research Focus</u></a></li>
-                <li><a href="publications.html"><u>Publications</u></a></li>
-                <li><a href="sc-out.html"><u>Science Outreach</u></a></li>
-                <li><a href="team.html"><u>Research Team</u></a></li>
-                <li><a href="gallery.html"><u>Gallery</u></a></li>
-                <li><a href="contact-us.html"><u>Join/Contact Us!</u></a></li>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="res_focus.html" class="active">Research Focus</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="sc-out.html">Scientific Outreach</a></li>
+                <li><a href="team.html">Research Team</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact-us.html">Join/Contact Us!</a></li>
             </ul>
         </nav>
     </header>
-    
-
 
     <main>
-    <h1>Scientific Outreach</h1>
-    <div class="gallery">
-        <div class="image-container">
-            <img src="s-o_1.1.jpg" alt="Image 1">  
-        </div>
-        <div class="image-container">
-            <img src="s-o_1.2.jpg" alt="Image 2">   
-        </div>
-        <div class="description">
-            <p>Delivered a talk titled “Career Prospects in Biotechnology Research” at Manav Rachna International Institute of Research and Studies, Faridabad, on 17th August 2023.</p>
-        </div>
-    </div>
-
-    <div class="gallery">
-        <div class="image-row2">
-            <div class="image-container1">
-                <img src="s-o_2.1.jpg" alt="Image 1" class="zoom">
+        <main style="padding-top: 195px;">
+        <div class="gallery">
+            <div class="image-container">
+                <img src="/home/prem/Documents/Demo/website/s-o_1.1.jpg" alt="Image 1">
             </div>
-            <div class="image-container1">
-                <img src="s-o_2.2.jpg" alt="Image 2" class="zoom">
-            </div>
-        </div>
-        <div class="image-row2">
-            <div class="image-container1">
-                <img src="s-o_2.3.jpg" alt="Image 3" class="zoom">
-            </div>
-            <div class="image-container1">
-                <img src="s-o_2.4.jpg" alt="Image 4" class="zoom">
-            </div>
-        </div>
-        <div class="description">
-         <p>Science outreach activity, visited Govt Primary School, Barshanghar of Distt Kullu, HP and Govt Centre Primary School, Shanghar, Distt Kullu HP. Delivered talks titled “The Importance of Education” on June 1-3, 2022.</p>
-        </div>
-    </div>
-
-    <div class="gallery">
-        <div class="image-container2">
-            <img src="s-o_3.1.jpg" alt="Image 1">
+            <div class="image-container">
+                <img src="/home/prem/Documents/Demo/website/s-o_1.2.jpg" alt="Image 2">
             </div>
             <div class="description">
-            <p>Delivered a webinar on “Life and work of the great Indian scientist Professor G.N. Ramachandran” on July 23, 2021, organized by RCB, Faridabad, as a part of Science Setu to commemorate the 75th Year of Indian Independence.
-            <a href="https://www.youtube.com/embed/uJQGXi_HlMk?si=LAcJaV4z7CuVvgGX" target="_blank">[Click Here]</a></p>
-            
+                <p>Delivered a talk titled “Career Prospects in Biotechnology Research” at Manav Rachna International Institute of Research and Studies, Faridabad, on 17th August 2023.</p>
+            </div>
         </div>
-    </div>
+    
+        <div class="gallery">
+            <div class="image-row2">
+                <div class="image-container1">
+                    <img src="/home/prem/Documents/Demo/website/s-o_2.1.jpg" alt="Image 1" class="zoom">
+                </div>
+                <div class="image-container1">
+                    <img src="/home/prem/Documents/Demo/website/s-o_2.2.jpg" alt="Image 2" class="zoom">
+                </div>
+            </div>
+            <div class="image-row2">
+                <div class="image-container1">
+                    <img src="/home/prem/Documents/Demo/website/s-o_2.3.jpg" alt="Image 3" class="zoom">
+                </div>
+                <div class="image-container1">
+                    <img src="/home/prem/Documents/Demo/website/s-o_2.4.jpg" alt="Image 4" class="zoom">
+                </div>
+            </div>
+            <div class="description">
+                <p>Science outreach activity, visited Govt Primary School, Barshanghar of Distt Kullu, HP and Govt Centre Primary School, Shanghar, Distt Kullu HP. Delivered talks titled “The Importance of Education” on June 1-3, 2022.</p>
+            </div>
+        </div>
+    
+        <div class="gallery">
+            <div class="image-container2">
+                <img src="/home/prem/Documents/Demo/website/s-o_3.1.jpg" alt="Image 1">
+            </div>
+            <div class="description">
+                <p>Delivered a webinar on “Life and work of the great Indian scientist Professor G.N. Ramachandran” on July 23, 2021, organized by RCB, Faridabad, as a part of Science Setu to commemorate the 75th Year of Indian Independence.
+                    <a href="https://www.youtube.com/embed/uJQGXi_HlMk?si=LAcJaV4z7CuVvgGX" target="_blank">[Click Here]</a></p>
+    
+            </div>
+        </div>
+    
+        <div class="gallery">
+            <div class="image-container">
+                <img src="/home/prem/Documents/Demo/website/s-o_4.1.jpg" alt="Image 1">
+            </div>
+            <div class="image-container">
+                <img src="/home/prem/Documents/Demo/website/s-o_4.2.jpg" alt="Image 2">
+            </div>
+            <div class="description">
+                <p>Delivered a webinar on "Opportunities & fellowships in India to pursue research as a career option" organized by the Department of Higher Education, Kullu, HP, on September 27, 2020.
+                    <a href="https://www.youtube.com/watch?v=lIkaCoz5dnQ&feature=share&fbclid=IwAR2lN4tBo4qavypVERQI0f2Fgqz-WpLYEhl1PyRIUP_KuORxH8Yh9A5Bxao" target="_blank">[Click Here]</a></p>
+            </div>
+    
+        </div>
+    
+        <div class="gallery">
+            <div class="image-container2">
+                <img src="/home/prem/Documents/Demo/website/s-o_5.1.jpg" alt="Image 1">
+            </div>
+            <div class="description">
+                <p>Invited to NEWS PLUS TV studio on July 29, 2020, and provided information on various fellowships available to pursue research a career option.
+                    <a href="https://www.youtube.com/watch?v=aGd1ojLQOO0&feature=share&fbclid=IwAR0T_cgVQ-ip_-NxvTFoDXxKhTZU28Ic4cfpiChGlrxIyJFWway2-GYXXiQ." target="_blank">[Click here]</a></div>
+            </p>
+        </div>
+    </main>
 
-    <div class="gallery">
-        <div class="image-container">
-            <img src="s-o_4.1.jpg" alt="Image 1">  
-        </div>
-        <div class="image-container">
-            <img src="s-o_4.2.jpg" alt="Image 2">   
-        </div>
-        <div class="description">
-        <p>Delivered a webinar on "Opportunities & fellowships in India to pursue research as a career option" organized by the Department of Higher Education, Kullu, HP, on September 27, 2020. 
-        <a href ="https://www.youtube.com/watch?v=lIkaCoz5dnQ&feature=share&fbclid=IwAR2lN4tBo4qavypVERQI0f2Fgqz-WpLYEhl1PyRIUP_KuORxH8Yh9A5Bxao" target="_blank">[Click Here]</a></p>
-    </div>
+    <footer>
+        <p>&copy; 2024 Structural Biology and Translation Regulation Research Lab</p>
+    </footer>
 
-    <div class="gallery">
-        <div class="image-container2">
-            <img src="s-o_5.1.jpg" alt="Image 1">  
-        </div>
-        <div class="description">
-        <p>Invited to NEWS PLUS TV studio on July 29, 2020, and provided information on various fellowships available to pursue research a career option.
-    <a href="https://www.youtube.com/watch?v=aGd1ojLQOO0&feature=share&fbclid=IwAR0T_cgVQ-ip_-NxvTFoDXxKhTZU28Ic4cfpiChGlrxIyJFWway2-GYXXiQ." target="_blank">[Click here]</a></div>
-</p> 
-   <div class="image-row">
-        <img src="image1.jpg" alt="Image 1">  
-        <img src="image2.jpg" alt="Image 2">
-        <img src="image3.jpg" alt="Image 3">
-        <img src="image7.jpg" alt="Image 4">
-        <img src="image5.jpg" alt="Image 5">
-        <img src="image4.jpg" alt="Image 6">
-        <!-- Add more images as needed -->
-    </div>
-</div>
-   <footer>
-    <p>&copy; 2024 Structural Biology and Translation Regulation Research Lab</p>
-</footer>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        function adjustLayout() {
+            const nav = document.querySelector('nav ul');
+            const headerText = document.querySelector('.header-text');
+            const screenWidth = window.innerWidth;
+
+            if (screenWidth < 768) {
+                nav.classList.add('mobile-nav');
+                headerText.classList.add('mobile-header-text');
+            } else {
+                nav.classList.remove('mobile-nav');
+                headerText.classList.remove('mobile-header-text');
+            }
+        }
+
+        // Adjust layout on page load
+        window.addEventListener('load', adjustLayout);
+
+        // Adjust layout on window resize
+        window.addEventListener('resize', adjustLayout);
+
+        // Add scroll event listener to reduce header padding and logo size
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-shrink');
+            } else {
+                header.classList.remove('header-shrink');
+            }
+        });
+    </script>
 </body>
-</main>
+</html>
