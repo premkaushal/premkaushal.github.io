@@ -1,238 +1,212 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE KAUSHAL LAB - Gallery</title>
+    <style>
+    /* Reset default margin and padding */
+    body, h1, h2, h3, h4, h5, p, ul, li {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<header>
-  <div class=" top-box"></div>       
-  <img src="SBTR-logo.png" alt="PSK_logo" class="logo">
-  <div class="header-text"></div>
-  <nav>
-      <ul>
-          <li><a href="homepage.html"><u>Home</u></a></li>
-          <li><a href="res_focus.html"><u>Research Focus</u></a></li>
-          <li><a href="publications.html"><u>Publications</u></a></li>
-          <li><a href="sc-out.html"><u>Science Outreach</u></a></li>
-          <li><a href="team.html"><u>Research Team</u></a></li>
-          <li><a href="gallery.html"><u>Gallery</u></a></li>
-          <li><a href="contact-us.html"><u>Join/Contact Us!</u></a></li>
-      </ul>
-  </nav>
-</header>
+        /* Set body font and background */
+        body {
+            font-family: "Open Sans", sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
 
-<style>
-/* Header styles */
-header {
-    background-color: #fff;
-    color: #800020;
-    padding: 5px;
-    text-align: left;
-    width: auto;
-    position: relative;
-    margin-bottom: 0px;
-    margin-left: 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        /* Header styles */
+        header {
+            background-color: #fff;
+            padding: 1.3% 0.8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 100%;
+            z-index: 10;
+            position: fixed;
+            top: 0;
+            transition: padding 0.3s ease;
+        }
 
-.top-box{
-    background-color: #0693e3;
-    height: 20px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-}
+        .header-shrink {
+            padding: 0.1% 0.5%;
+        }
+
+        .header-shrink .logo {
+            width: 5%;
+        }
+
+        .top-box {
+            background-color: #0693e3;
+            height: 20px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .logo {
+            width: 150px;
+            height: auto;
+            transition: width 0.3s ease;
+        }
+
+        nav {
+            position: relative;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 5px 10px;
+        }
+
+        .nav-links a:hover {
+            background-color: #0693e3;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            height: 3px;
+            width: 25px;
+            background-color: #333;
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: -100%;
+                background-color: #fff;
+                transition: 0.5s;
+            }
+
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                width: 100%;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* Main section styles */
+        main {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .theme p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .background {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        }
+
+        #background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7; /* Reduce transparency */
+        }
+
+        .lab-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: left;
+            z-index: 1; /* Ensure the text appears above the video */
+        }
+
+        .lab-text .small-text {
+            color: darkblue;
+            font-size: 4em; /* Adjust as needed */
+            display: block;
+            text-align: left;
+        }
+
+        .lab-text .big-text {
+            color: cyan;
+            font-size: 10em; /* Adjust as needed */
+            display: block;
+            margin-top: -0.5em; /* Adjust to align with the smaller text */
+            text-align: left;
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            font-size: 15px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
 
 
-.logo {
-    width: 180px;
-    height: 180px;
-    position: relative;
-    top: 18px;
-    left: 1px;
-}
-
-.header-text{
-    flex: 1;
-    margin-left: 20px;
-}   
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 50px;
-}
-
-nav ul li a {
-    color: black;
-    text-decoration: none;
-    font-size: 20px;
-}
-* {box-sizing: border-box}
-    body {font-family: Verdana, sans-serif; margin:0}
-.mySlides {display: none}
-img {vertical-align: middle;}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 800px;
-  position: relative;
-  margin: auto;
-    top: 70px;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: grey;
-  font-weight: bold;
-  font-size: 35px;
-  transition: 0.6s ease;
-    
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 200px 15px;
-    
-  background-color: gray;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
-}
-
-.Lab {
-  
-  font-size: 50px;
-  text-align: center;
-}
-
-/* Footer styles */
-footer {
-    text-align: center;
-    margin-top: 100px;
-    padding: 1px 0;
-    background-color: #333;
-    color: #fff;
-    font-size: 12px;
-    width: 100%;
-    height: -30px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-.divider {
+        .divider {
     height: 50px;
     background-color: #ccc; /* Adjust the color of the divider */
     margin-bottom: 18px; /* Adjust the space between the divider and the images */
     margin-top: 2%;
-    position: relative; /* Set position relative for proper centering */  
+    position: relative; /* Set position relative for proper centering */
+    text-align: center;  
 }
 
-h1 {
-    text-align: center; /* Center align the heading */
-    position: absolute; /* Position the heading relative to the divider */
-    top: 26%; /* Position the heading vertically centered */
-    left: 50%; /* Position the heading horizontally centered */
-    transform: translate(-50%, -50%); /* Center the heading precisely */
-    margin: 0; /* Remove any default margins */
-    z-index: 2; /* Set z-index to bring the heading to the front */
-    font-size: 250%;
-  }
+/* Style for the h1 within the divider */
+.divider h1 {
+            position: absolute; /* Position the h1 absolutely */
+            top: 50%; /* Move the h1 to the vertical center */
+            left: 50%; /* Move the h1 to the horizontal center */
+            transform: translate(-50%, -50%); /* Center the h1 */
+        }
 
-h2 {
-    text-align: center; /* Center align the heading */
-    position: absolute; /* Position the heading relative to the divider */
-    top: 363.5%; /* Position the heading vertically centered */
-    left: 50%; /* Position the heading horizontally centered */
-    transform: translate(-50%, -50%); /* Center the heading precisely */
-    margin: 0; /* Remove any default margins */
-    z-index: 2; /* Set z-index to bring the heading to the front */
-    font-size: 250%;
-  }
-
-h3 {
-    text-align: center; /* Center align the heading */
-    position: absolute; /* Position the heading relative to the divider */
-    top: 429.5%; /* Position the heading vertically centered */
-    left: 50%; /* Position the heading horizontally centered */
-    transform: translate(-50%, -50%); /* Center the heading precisely */
-    margin: 0; /* Remove any default margins */
-    z-index: 2; /* Set z-index to bring the heading to the front */
-    font-size: 250%;
-  }
 
   /* Container for images */
 .container {
@@ -261,120 +235,183 @@ h3 {
     margin-bottom: 1%;
   }
 
+  .image-wrapper img:hover {
+            transform: scale(1.05);
+        }
+
   .date {
     margin-top: 5px; /* Adjust spacing between image and date */
     font-size: 14px; /* Adjust the font size of the date */
     padding-bottom: 3%;
   }
-  
+        /* Responsive styles for JavaScript adjustment */
+        .mobile-nav ul {
+            flex-direction: column;
+            align-items: center;
+        }
 
-  
+        .mobile-nav ul li {
+            margin-bottom: 10px;
+        }
 
-</style>
+        .mobile-header-text {
+            font-size: 1.2em;
+        }
+
+        .gallery-container {
+            padding-top: 10px; /* Adjust based on header height */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            position: relative; /* Add this */
+        }
+        .gallery-container h1 {
+            text-align: center; /* Center align the heading */
+            position: absolute; /* Position the heading relative to the divider */
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Lab Moments</h1>
-<div class="divider"></div>
-     <div class="container">
-      <div class="image-wrapper">
-      <img src="moment_1.jpeg" alt="Lab Visit 1">
-    </div>
-    <div class="image-wrapper">
-      <img src="moment_2.jpeg" alt="Lab Visit 2">
-    </div>
-    <div class="image-wrapper">
-      <img src="moment_3.jpg" alt="Lab Visit 3">
-    </div>
-    <div class="image-wrapper">
-        <img src="moment_4.jpg" alt="Lab Visit 4">
-      </div>
-      <div class="image-wrapper">
-        <img src="moment_5.jpg" alt="Lab Visit 4">
-      </div>
-      <div class="image-wrapper">
-        <img src="moment_6.jpg" alt="Lab Visit 4">
-      </div>
-      <div class="image-wrapper">
-        <img src="moment_7.jpg" alt="Lab Visit 4">
-      </div>
-      <div class="image-wrapper">
-        <img src="moment_8.jpg" alt="Lab Visit 4">
-      </div>
-      <div class="image-wrapper">
-        <img src="moment_9.jpg" alt="Lab Visit 4">
-      </div>
-      <div class="image-wrapper">
-        <img src="moment_10.jpg" alt="Lab Visit 4">
-      </div>
-      <div class="image-wrapper">
-        <img src="moment_11.jpg" alt="Lab Visit 4">
-      </div>
-      <div class="image-wrapper">
-        <img src="moment_12.jpg" alt="Lab Visit 4">
-      </div>
-      <div class="image-wrapper">
-        <img src="moment_13.jpg" alt="Lab Visit 4">
-      </div>
-      <div class="image-wrapper">
-        <img src="moment_14.jpg" alt="Lab Visit 4">
-      </div>
-      <div class="image-wrapper">
-        <img src="moment_15.jpg" alt="Lab Visit 4">
-      </div>
-      <div class="image-wrapper">
-        <img src="moments_16.jpg" alt="Lab Visit 4">
-      </div>
-      <div class="image-wrapper">
-        <img src="moment_17.jpg" alt="Lab Visit 4">
-      </div>
-      <div class="image-wrapper">
-        <img src="moment_18.jpeg" alt="Lab Visit 4">
-      </div>
-</div>
+    <header>
+        <div class="top-box"></div>
+        <img src="SBTR-logo.png" alt="PSK_logo" class="logo">
+        <div class="header-text">
+            <h1>The Kaushal Lab</h1>
+        </div>
+        <nav>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="res_focus.html" class="active">Research Focus</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="sc-out.html">Scientific Outreach</a></li>
+                <li><a href="team.html">Research Team</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact-us.html">Join/Contact Us!</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <main style="padding-top: 120px;"> 
+    
+            <div class="divider">
+                <h1>Lab Achievements</h1>
+            </div>
+             <div class="container">
+              <div class="image-wrapper">
+              <img src="achieve_1.jpeg" alt="Lab Visit 1">
+              <p><strong>EMSI Excellence Award in Microscopy</strong></p>
+              <p class="date">17th-May-2024</p>
+            </div>
+            <div class="image-wrapper">
+              <img src="achieve_3.jpeg" alt="Lab Visit 2">
+              <p><strong>Best poster presentation award</strong></p>
+              <p class="date">17th-May-2024</p>
+            </div>
+            <div class="image-wrapper">
+              <img src="achieve_3.jpg" alt="Lab Visit 3">
+              <p><strong>Best poster award</strong></p>
+              <p class="date">17th-May-2024</p>
+            </div>
+        </div>
 
-<h2>Lab Achievements</h2>
-<div class="divider"></div>
-     <div class="container">
-      <div class="image-wrapper">
-      <img src="achieve_1.jpeg" alt="Lab Visit 1">
-      <p><strong>EMSI Excellence Award in Microscopy</strong></p>
-      <p class="date">17th-May-2024</p>
-    </div>
-    <div class="image-wrapper">
-      <img src="achieve_3.jpeg" alt="Lab Visit 2">
-      <p><strong>Best poster presentation award</strong></p>
-      <p class="date">17th-May-2024</p>
-    </div>
-    <div class="image-wrapper">
-      <img src="achieve_3.jpg" alt="Lab Visit 3">
-      <p><strong>Best poster award</strong></p>
-      <p class="date">17th-May-2024</p>
-    </div>
-</div>
+        <div class="divider">
+            <h1>Lab Visits</h1>
+            </div>
+                 <div class="container">
+                  <div class="image-wrapper">
+                  <img src="Prof_1.jpg" alt="Lab Visit 1">
+                  <p><strong>Prof. Joel L. Sussman</strong></p>
+                  <p class="date">04th-Oct-2023</p>
+                </div>
+                <div class="image-wrapper">
+                  <img src="Prof_B.jpg" alt="Lab Visit 2">
+                  <p><strong>Prof. P. Balaram</strong></p>
+                  <p class="date">13th-Dec-2023</p>
+                </div>
+                <div class="image-wrapper">
+                  <img src="Prof_U.jpg" alt="Lab Visit 3">
+                  <p><strong>Prof. Utpal Nath</strong></p>
+                  <p class="date">19 April 2024</p>
+                </div>
+            </div>
 
-<h3>Lab Visits</h3>
-<div class="divider"></div>
-     <div class="container">
-      <div class="image-wrapper">
-      <img src="Prof_1.jpg" alt="Lab Visit 1">
-      <p><strong>Prof. Joel L. Sussman</strong></p>
-      <p class="date">04th-Oct-2023</p>
-    </div>
-    <div class="image-wrapper">
-      <img src="Prof_B.jpg" alt="Lab Visit 2">
-      <p><strong>Prof. P. Balaram</strong></p>
-      <p class="date">13th-Dec-2023</p>
-    </div>
-    <div class="image-wrapper">
-      <img src="Prof_U.jpg" alt="Lab Visit 3">
-      <p><strong>Prof. Utpal Nath</strong></p>
-      <p class="date">19 April 2024</p>
-    </div>
-</div>
-  
+            <div class="divider">
+                <h1>Lab Moments</h1>
+                </div>
+           <div class="gallery-container">
+            <div class="image-wrapper">
+                <img src="moment_1.jpeg" alt="Lab Visit 1">
+              </div>
+              <div class="image-wrapper">
+                <img src="moment_2.jpeg" alt="Lab Visit 2">
+              </div>
+              <div class="image-wrapper">
+                <img src="moment_3.jpg" alt="Lab Visit 3">
+              </div>
+              <div class="image-wrapper">
+                  <img src="moment_4.jpg" alt="Lab Visit 4">
+                </div>
+                <div class="image-wrapper">
+                  <img src="moment_5.jpg" alt="Lab Visit 4">
+                </div>
+                <div class="image-wrapper">
+                  <img src="moment_6.jpg" alt="Lab Visit 4">
+                </div>
+                <div class="image-wrapper">
+                  <img src="moment_7.jpg" alt="Lab Visit 4">
+                </div>
+                <div class="image-wrapper">
+                  <img src="moment_8.jpg" alt="Lab Visit 4">
+                </div>
+                <div class="image-wrapper">
+                  <img src="moment_9.jpg" alt="Lab Visit 4">
+                </div>
+                <div class="image-wrapper">
+                  <img src="moment_10.jpg" alt="Lab Visit 4">
+                </div>
+                <div class="image-wrapper">
+                  <img src="moment_11.jpg" alt="Lab Visit 4">
+                </div>
+                <div class="image-wrapper">
+                  <img src="moment_12.jpg" alt="Lab Visit 4">
+                </div>
+                <div class="image-wrapper">
+                  <img src="moment_13.jpg" alt="Lab Visit 4">
+                </div>
+                <div class="image-wrapper">
+                  <img src="moment_14.jpg" alt="Lab Visit 4">
+                </div>
+                <div class="image-wrapper">
+                  <img src="moment_15.jpg" alt="Lab Visit 4">
+                </div>
+                <div class="image-wrapper">
+                  <img src="moments_16.jpg" alt="Lab Visit 4">
+                </div>
+                <div class="image-wrapper">
+                  <img src="moment_17.jpg" alt="Lab Visit 4">
+                </div>
+                <div class="image-wrapper">
+                  <img src="moment_18.jpeg" alt="Lab Visit 4">
+                </div>
+            <!-- Add more image wrappers as needed -->
+        </div>
 
-<script>
-let slideIndex = 1;
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Structural Biology and Translation Regulation Research Lab</p>
+    </footer>
+
+    <script>
+        let slideIndex = 1;
 showSlides(slideIndex);
 
 function plusSlides(n) {
@@ -401,17 +438,40 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 
-</script>
-<footer>
-  <p>&copy; 2024 Structural Biology and Translation Regulation Research Lab</p>
-</footer>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        function adjustLayout() {
+            const nav = document.querySelector('nav ul');
+            const headerText = document.querySelector('.header-text');
+            const screenWidth = window.innerWidth;
+
+            if (screenWidth < 768) {
+                nav.classList.add('mobile-nav');
+                headerText.classList.add('mobile-header-text');
+            } else {
+                nav.classList.remove('mobile-nav');
+                headerText.classList.remove('mobile-header-text');
+            }
+        }
+
+        // Adjust layout on page load
+        window.addEventListener('load', adjustLayout);
+
+        // Adjust layout on window resize
+        window.addEventListener('resize', adjustLayout);
+
+        // Add scroll event listener to reduce header padding and logo size
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-shrink');
+            } else {
+                header.classList.remove('header-shrink');
+            }
+        });
+    </script>
 </body>
-</html> 
-
-
-           
-
-                
-
-
-            
+</html>
