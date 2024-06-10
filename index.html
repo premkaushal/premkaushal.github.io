@@ -4,56 +4,295 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE KAUSHAL LAB</title>
-    <link rel="stylesheet" href="homepage.css"> <!-- Link to your CSS file -->
-</head>
-<body>
     <style>
-        .background{
-            width: 80%;
-            height: 80px;
+        /* Reset default margin and padding */
+        body, h1, h2, h3, h4, h5, p, ul, li {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Set body font and background */
+        body {
+            font-family: "Open Sans", sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #fff;
+            padding: 1.3% 0.8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 100%;
+            z-index: 10;
+            position: fixed;
+            top: 0;
+            transition: padding 0.3s ease;
+        }
+
+        .header-shrink {
+            padding: 0.1% 0.5%;
+        }
+
+        .header-shrink .logo {
+            width: 5%;
+        }
+
+        .top-box {
+            background-color: #0693e3;
+            height: 20px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .logo {
+            width: 150px;
+            height: auto;
+            transition: width 0.3s ease;
+        }
+
+        nav {
+            position: relative;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 5px 10px;
+        }
+
+        .nav-links a:hover {
+            background-color: #0693e3;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            height: 3px;
+            width: 25px;
+            background-color: #333;
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: -100%;
+                background-color: #fff;
+                transition: 0.5s;
+            }
+
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                width: 100%;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* Main section styles */
+        main {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .theme p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .background {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        }
+
+        #background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7; /* Reduce transparency */
+        }
+
+        .lab-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: left;
+            z-index: 1; /* Ensure the text appears above the video */
+        }
+
+        .lab-text .small-text {
+            color: darkblue;
+            font-size: 4em; /* Adjust as needed */
+            display: block;
+            text-align: left;
+        }
+
+        .lab-text .big-text {
+            color: cyan;
+            font-size: 10em; /* Adjust as needed */
+            display: block;
+            margin-top: -0.5em; /* Adjust to align with the smaller text */
+            text-align: left;
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            font-size: 15px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Responsive styles for JavaScript adjustment */
+        .mobile-nav ul {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .mobile-nav ul li {
+            margin-bottom: 10px;
+        }
+
+        .mobile-header-text {
+            font-size: 1.2em;
+        }
+
+        #research_focus {
+            margin-top: 160px; /* Adjust this value as needed based on header height */
         }
     </style>
+</head>
+<body>
     <header>
-        <div class=" top-box"></div>       
+        <div class="top-box"></div>
         <img src="SBTR-logo.png" alt="PSK_logo" class="logo">
-        <div class="header-text"></div>
+        <div class="header-text">
+            <h1>The Kaushal Lab</h1>
+        </div>
         <nav>
-            <ul>
-                <li><a href="index.html"><u>Home</u></a></li>
-                <li><a href="res_focus.html" class="active"><u>Research Focus</u></a></li>
-                <li><a href="publications.html"><u>Publications</u></a></li>
-                <li><a href="sc-out.html"><u>Scientific Outreach</u></a></li>
-                <li><a href="team.html"><u>Research Team</u></a></li>
-                <li><a href="gallery.html"><u>Gallery</u></a></li>
-                <li><a href="contact-us.html"><u>Join/Contact Us!</u></a></li>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="res_focus.html" class="active">Research Focus</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="sc-out.html">Scientific Outreach</a></li>
+                <li><a href="team.html">Research Team</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact-us.html">Join/Contact Us!</a></li>
             </ul>
         </nav>
     </header>
     
     <main>
-        <section id="research_focus">
-                <div class="theme">
-                <p>Our laboratory's research goal is to unravel the structural basis of the functioning of macromolecular complexes involved in translation regulation and ribosome assembly, thereby identifying the potential drug targets. 
-                    Translation, the protein synthesis, in which genetic information present in mRNA is decoded into a polypeptide, occurs on the ribosome in all cells. Protein synthesis is one of the most energy-consuming cellular processes, 
-                    consumes nearly 50% of the cell's energy, and the ribosome is a target of nearly 40% of known antibiotics. We focus on understanding the structural aspects of translation regulation in <em>Mycobacterium tuberculosis</em> under different stresses and how a mega Dalton protein synthesis machinery, the ribosome, assembles inside the cell. We apply structural biology tool cryo- electron microscopy with molecular biology and biochemistry techniques. 
-            </p>
-        </div>
-        </section>
         <div class="background">
-            <video autoplay loop muted id = "background video">
+            <div class="lab-text">
+                <span class="small-text">The</span>
+                <span class="big-text">Kaushal Lab</span>
+            </div>
+            <video autoplay loop muted id="background-video">
                 <source src="movie1homepage.mp4" type="video/mp4">
             </video>
-
         </div>
-        
-        <div class="content">
-            <h1>The Kaushal Lab</h1>
-        </div>
+        <section id="research_focus">
+            <div class="theme">
+                <p>Our laboratory's research goal is to unravel the structural basis of the functioning of macromolecular complexes involved in translation regulation and ribosome assembly, thereby identifying potential drug targets. 
+                Translation, the process of protein synthesis in which genetic information present in mRNA is decoded into a polypeptide, occurs on the ribosome in all cells. Protein synthesis is one of the most energy-consuming cellular processes, 
+                consuming nearly 50% of the cell's energy, and the ribosome is a target of nearly 40% of known antibiotics. We focus on understanding the structural aspects of translation regulation in <em>Mycobacterium tuberculosis</em> under different stresses and how a mega Dalton protein synthesis machinery, the ribosome, assembles inside the cell. We apply the structural biology tool cryo-electron microscopy alongside molecular biology and biochemistry techniques.
+                </p>
+            </div>
+        </section>
     </main>
     
     <footer>
         <p>&copy; 2024 Structural Biology and Translation Regulation Research Lab</p>
     </footer>
 
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        function adjustLayout() {
+            const nav = document.querySelector('nav ul');
+            const headerText = document.querySelector('.header-text');
+            const screenWidth = window.innerWidth;
+
+            if (screenWidth < 768) {
+                nav.classList.add('mobile-nav');
+                headerText.classList.add('mobile-header-text');
+            } else {
+                nav.classList.remove('mobile-nav');
+                headerText.classList.remove('mobile-header-text');
+            }
+        }
+
+        // Adjust layout on page load
+        window.addEventListener('load', adjustLayout);
+
+        // Adjust layout on window resize
+        window.addEventListener('resize', adjustLayout);
+
+        // Add scroll event listener to reduce header padding and logo size
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-shrink');
+            } else {
+                header.classList.remove('header-shrink');
+            }
+        });
+    </script>
 </body>
 </html>
+
