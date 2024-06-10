@@ -3,72 +3,341 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="contact-us.css"> <!-- Link your external CSS file -->
+    <title>Research Focus - The Kaushal Lab</title>
+    <style>
+        /* Reset default margin and padding */
+        body, h1, h2, h3, h4, h5, p, ul, li {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Set body font and background */
+        body {
+            font-family: "Open Sans", sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #fff;
+            padding: 1.3% 0.8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 100%;
+            z-index: 10;
+            position: fixed;
+            top: 0;
+            transition: padding 0.3s ease;
+        }
+
+        .header-shrink {
+            padding: 0.1% 0.5%;
+        }
+
+        .header-shrink .logo {
+            width: 5%;
+        }
+
+        .top-box {
+            background-color: #0693e3;
+            height: 20px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .logo {
+            width: 150px;
+            height: auto;
+            transition: width 0.3s ease;
+        }
+
+        nav {
+            position: relative;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 5px 10px;
+        }
+
+        .nav-links a:hover {
+            background-color: #0693e3;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            height: 3px;
+            width: 25px;
+            background-color: #333;
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 60px;
+                left: -100%;
+                background-color: #fff;
+                transition: 0.5s;
+            }
+
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+                width: 100%;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* Main section styles */
+        main {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .contact-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+            padding: 10%;
+        }
+
+        .contact-info {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .contact-info p {
+            margin-left: 0;
+        }
+
+        .map-container {
+            margin-top: 70px;
+            box-shadow: #555;
+            width: 100%;
+            height: 400px;
+        }
+
+        .join {
+            font-size: 20px;
+            text-align: center;
+            margin-top: 2px;
+        }
+
+        .query-section {
+            text-align: left;
+            margin-top: 40px;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .query-box {
+            width: 60%;
+            margin: 0 auto;
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .query-section h4 {
+            font-size: 25px;
+            text-align: center;
+        }
+
+        .query-form label,
+        .query-form input,
+        .query-form textarea,
+        .query-form button {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .query-form input,
+        .query-form textarea {
+            width: 80%;
+            padding: 8px;
+        }
+
+        .query-form button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .query-form button:hover {
+            background-color: #555;
+        }
+
+         /* Footer styles */
+         footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            font-size: 15px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Responsive styles for JavaScript adjustment */
+        .mobile-nav ul {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .mobile-nav ul li {
+            margin-bottom: 10px;
+        }
+
+        .mobile-header-text {
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="top-box"></div>       
+        <div class="top-box"></div>
         <img src="SBTR-logo.png" alt="PSK_logo" class="logo">
-        <div class="header-text"></div>
-        <div class="header-text"></div>
+        <div class="header-text">
+            <h1>The Kaushal Lab</h1>
+        </div>
         <nav>
-            <ul>
-                <li><a href="index.html"><u>Home</u></a></li>
-                <li><a href="res_focus.html" class="active"><u>Research Focus</u></a></li>
-                <li><a href="publications.html"><u>Publications</u></a></li>
-                <li><a href="sc-out.html"><u>Science Outreach</u></a></li>
-                <li><a href="team.html"><u>Research Team</u></a></li>
-                <li><a href="gallery.html"><u>Gallery</u></a></li>
-                <li><a href="contact-us.html"><u>Join/Contact Us!</u></a></li>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="res_focus.html" class="active">Research Focus</a></li>
+                <li><a href="publications.html">Publications</a></li>
+                <li><a href="sc-out.html">Scientific Outreach</a></li>
+                <li><a href="team.html">Research Team</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact-us.html">Join/Contact Us!</a></li>
             </ul>
         </nav>
     </header>
-    
+
     <main>    
         <section class="contact-details">
-             <div class="contact-info">
-            <h2>Contact Us!</h2>
-            <h3><strong>Dr. Prem S. Kaushal</strong></h3>
-            <p>Regional Centre for Biotechnology
-            <p>NCR Biotech Science Cluster</p>
-            <p>3rd Milestone, Faridabad-Gurgaon Expressway</p>    
-            <p>P.O. Box No. 3, Faridabad - 121 001</p> 
-            <p>Haryana (NCR Delhi), India</p>
-            <p><strong>Email:</strong> prem[dot]kaushal@rcb[dot]res[dot]in</p>
-            <p><strong>Phone:</strong>0129-2848888</p>
-           </div>
+            <div class="contact-info">
+                <h1>Contact Us!</h1>
+                <h3><strong>Dr. Prem S. Kaushal</strong></h3>
+                <p>Regional Centre for Biotechnology</p>
+                <p>NCR Biotech Science Cluster</p>
+                <p>3rd Milestone, Faridabad-Gurgaon Expressway</p>    
+                <p>P.O. Box No. 3, Faridabad - 121 001</p> 
+                <p>Haryana (NCR Delhi), India</p>
+                <p><strong>Email:</strong> prem[dot]kaushal@rcb[dot]res[dot]in</p>
+                <p><strong>Phone:</strong>0129-2848888</p>
+            </div>
             <div class="map-container">
                 <!-- Replace the iframe source with your Google Maps embed code -->
-                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d459989425.69100565!2d77.25326681886963!3d28.40595295524628!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cde5a6b85e5fd%3A0x18f6f82274beb561!2sRegional%20Centre%20for%20Biotechnology!5e0!3m2!1sen!2sin!4v1714055240452!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
+                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d459989425.69100565!2d77.25326681886963!3d28.40595295524628!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cde5a6b85e5fd%3A0x18f6f82274beb561!2sRegional%20Centre%20for%20Biotechnology!5e0!3m2!1sen!2sin!4v1714055240452!5m2!1sen!2sin" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
+            </div>
         </section>
-    <div class="join">
-        <p>Highly motivated researchers interested in structural biology, particularly, in Cryo- electron microscopy (Cryo- EM) and X-ray crystallography are requested to contact directly to the PI.</p>
-    </div>
+        <div class="join">
+            <p>Highly motivated researchers interested in structural biology, particularly, in Cryo- electron microscopy (Cryo- EM) and X-ray crystallography are requested to contact directly to the PI.</p>
+        </div>
         <section class="query-section">
             <div class="query-box">
-            <h4>Have a Question?</h4>
-            <form class="query-form" action="mailto:prem.kaushal@rcb.res.in" method="post" enctype="text/plain">
-                <label for="name">Name*:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Email*:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="description">Description:</label>
-                <textarea id="description" name="description" required></textarea>
-
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    </section>
+                <h4>Have a Question?</h4>
+                <form class="query-form" action="mailto:prem.kaushal@rcb.res.in" method="post" enctype="text/plain">
+                    <label for="name">Name*:</label>
+                    <input type="text" id="name" name="name" required>
     
-    <p></p>
-</main>
-
+                    <label for="email">Email*:</label>
+                    <input type="email" id="email" name="email" required>
+    
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" required></textarea>
+    
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    
     <footer>
-        <p>&copy; 2024 Structural Biology and Translation Regulation Research Lab</p>
+        <p>&copy 2024 Structural Biology and Translation Regulation Research Lab</p>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        function adjustLayout() {
+            const nav = document.querySelector('nav ul');
+            const headerText = document.querySelector('.header-text');
+            const screenWidth = window.innerWidth;
+
+            if (screenWidth < 768) {
+                nav.classList.add('mobile-nav');
+                headerText.classList.add('mobile-header-text');
+            } else {
+                nav.classList.remove('mobile-nav');
+                headerText.classList.remove('mobile-header-text');
+            }
+        }
+
+        // Adjust layout on page load
+        window.addEventListener('load', adjustLayout);
+
+        // Adjust layout on window resize
+        window.addEventListener('resize', adjustLayout);
+
+        // Add scroll event listener to reduce header padding and logo size
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-shrink');
+            } else {
+                header.classList.remove('header-shrink');
+            }
+        });
+    </script>
 
 </body>
 </html>
