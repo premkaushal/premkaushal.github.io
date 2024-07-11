@@ -32,7 +32,7 @@
             z-index: 10;
             position: fixed;
             top: 0;
-            transition: padding 0.3s ease;
+            transition: padding 0.3s ease; /* Add height transition */
         }
 
         .header-shrink {
@@ -58,8 +58,13 @@
             transition: width 0.3s ease;
         }
 
+        .header-text {
+            margin-left: 20px; /* Adjust margin as needed */
+        }
+
         nav {
             position: relative;
+            transition: all 0.3s ease;
         }
 
         .nav-links {
@@ -87,47 +92,162 @@
 
         .hamburger {
             display: none;
-            flex-direction: column;
             cursor: pointer;
         }
 
-        .bar {
-            height: 3px;
+        .hamburger-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
             width: 25px;
+            height: 20px;
+            position: relative;
+            z-index: 11;
+        }
+
+        .hamburger-inner {
+            width: 100%;
+            height: 2px;
             background-color: #333;
-            margin: 4px 0;
-            transition: 0.4s;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo {
+                margin-top: 10px;
+            }
+
+            .header-text {
+                margin-left: 0;
+                margin-top: 10px;
+                text-align: center;
+            }
+
             .nav-links {
+                display: none;
                 flex-direction: column;
                 width: 100%;
-                position: absolute;
-                top: 60px;
-                left: -100%;
+                position: static;
                 background-color: #fff;
                 transition: 0.5s;
+                border: none;
+                box-shadow: none;
+                border-radius: 0;
+                padding: 10px 0;
+                margin-top: 10px;
+            }
+
+            .nav-links.active {
+                display: flex !important;
             }
 
             .nav-links li {
                 margin: 0;
                 text-align: center;
                 width: 100%;
+                padding: 10px 0;
+                border-top: 1px solid #ccc;
             }
 
-            .nav-links.active {
-                left: 0;
+            .nav-links li:first-child {
+                border-top: none;
+            }
+
+            .nav-links a {
+                font-size: 18px;
+                display: block;
+                width: 100%;
             }
 
             .hamburger {
-                display: flex;
+                display: block;
+                margin-right: 20px;
             }
+
+            .hamburger.active .hamburger-inner:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .hamburger.active .hamburger-inner:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .hamburger-inner:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+            main {
+                margin-top: 0;
+                text-align: center;
+            }
+
+            .background {
+                position: relative;
+                margin: 0 auto;
+                padding: 10px;
+                width: 100%;
+                height: auto;
+                overflow: hidden;
+            }
+
+            .team-member {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .member-image {
+                order: -1; /* Move image above info */
+                padding: 20px;
+                display: flex;
+                justify-content: center;
+                align-content: center ;
+                width: 450px; /* Set the desired width */
+                height: 450px; /* Set the desired height */
+                object-fit: cover; /* Ensures the image covers the dimensions while maintaining aspect ratio */
+                margin-top: 10%;           
+            }
+
+            .member-info {
+                padding: 20px;
+                text-align: center;
+            }
+
+            .past {
+                padding: 10px;
+            }
+            
+            .past h3 {
+                font-size: 1.5em;
+            }
+            
+            .past h4 {
+                font-size: 1.2em;
+            }
+            
+            .past li {
+                font-size: 1em;
+            }
+            
+            .past ul {
+                padding-left: 20px;
+            }
+
+
+
         }
+
+        /* General team member styles */
         .team-member {
             display: flex;
             align-items: center;
             margin-bottom: 20px;
+            margin-left: 80px;
         }
 
         .team-members h3 {
@@ -148,6 +268,14 @@
 
         .team-members li {
             font-size: 18px;
+        }
+
+        .past h3, .past h4 {
+            margin: 10px 0;
+        }
+
+        .past li {
+            margin: 5px 0;
         }
 
         .member-info {
@@ -262,10 +390,6 @@
             margin-bottom: 10px;
         }
 
-        .mobile-header-text {
-            font-size: 1.2em;
-        }
-
         #research_focus {
             margin-top: 160px; /* Adjust this value as needed based on header height */
         }
@@ -280,11 +404,13 @@
         </div>
         <nav>
             <div class="hamburger" onclick="toggleMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                    <div class="hamburger-inner"></div>
+                    <div class="hamburger-inner"></div>
+                </div>
             </div>
-            <ul class="nav-links">
+                <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="res_focus.html" class="active">Research Focus</a></li>
                 <li><a href="publications.html">Publications</a></li>
@@ -310,38 +436,35 @@
                     <li>Staff Scientist, CDFD, Hyderabad, INDIA</li>
                 </ul>
                 <a href="CURRICULUM VITAE PSK-6jun2024.pdf" target="_blank">CV.</a>
-
             </div>
             <div class="member-image">
                 <img src="Prem Kaushal.jpg" alt="Dr. Prem S. Kaushal">
             </div>
         </section>
-        
-        <div class="divider"></div>
+
         <section class="team-member">
             <div class="member-info">
                 <h2>Niraj Kumar</h2>
-                <p>PhD-SRF</p>
+                <p><strong>PhD-SRF</strong></p>
                 <p></p>
                 <ul>
                     <li>ICAR NET qualified (2017)</li>
                     <li>CSIR UGC Fellowship (2018)</li>
                     <li>GATE - XL (2018)</li>
                     <p>My research focus is to reveal unique function of a hibernation promotion factor RafH,
-                         induces under environmental stress (Hypoxia) condition in mycobacteria. RafH protein inhibts the protein synthesis,
-                          protect ribosomes from RNase degradation and provides resistance against antibiotics to mycobacteria.  </p>
+                        induces under environmental stress (Hypoxia) condition in mycobacteria. RafH protein inhibts the protein synthesis,
+                         protect ribosomes from RNase degradation and provides resistance against antibiotics to mycobacteria.  </p>
                 </ul>
             </div>
             <div class="member-image">
-                <img src="Niraj.jpg" alt="Niraj Kumar" class="profile-image">
+                <img src="Niraj.jpg" alt="Dr. Bhavana Nanda">
             </div>
         </section>
-        <div class="divider"></div>
 
         <section class="team-member">
             <div class="member-info">
                 <h2>Ankita Arora</h2>
-                <p>PhD-SRF</p>
+                <p><strong>PhD-SRF</strong></p>
                 <p></p>
                 <ul>
                     <li>GATE-BT (2018)</li>
@@ -351,15 +474,13 @@
                 </ul>
             </div>
             <div class="member-image">
-                <img src="Ankita.jpg" alt="Ankita" class="profile-image1">
+                <img src="Ankita.jpg" alt="Ankita">
             </div>
         </section>
-        <div class="divider"></div>
-
         <section class="team-member">
             <div class="member-info">
                 <h2>Shivani Sharma</h2>
-                <p>PhD-SRF</p>
+                <p><strong>PhD-SRF</strong></p>
                 <p></p>
                 <ul>
                     <li>GATE-BT(2019), LS(2020)</li>
@@ -368,15 +489,13 @@
                 </ul>
             </div>
             <div class="member-image">
-                <img src="Shivani1.jpg" alt="Shivani Sharma" class="profile-image1">
+                <img src="Shivani1.jpg" alt="Ankita">
             </div>
         </section>
-        <div class="divider"></div>
-
         <section class="team-member">
             <div class="member-info">
                 <h2>Soumen Ta</h2>
-                <p>PhD-JRF</p>
+                <p><strong>PhD-JRF</strong></p>
                 <p></p>
                 <ul>
                     <li>DBT- BET qualified (2023)</li>
@@ -386,15 +505,13 @@
                 </ul>
             </div>
             <div class="member-image">
-                <img src="Soumen.jpg" alt="Soumen Ta" class="profile-image2">
+                <img src="Soumen.jpg" alt="Ankita">
             </div>
         </section>
-        <div class="divider"></div>
-
         <section class="team-member">
             <div class="member-info">
                 <h2>Tajamul Islam</h2>
-                <p>MS-PhD</p>
+                <p><strong>MS-PhD</strong></p>
                 <p></p>
                 <ul>
                     <li>Ramachandran DBT Fellow (2022)</li>
@@ -406,15 +523,13 @@
                 </ul>
             </div>
             <div class="member-image">
-                <img src="Tajamul.jpg" alt="Tajamul Islam" class="profile-image2">
+                <img src="Tajamul.jpg" alt="Tajamul">
             </div>
         </section>
-        <div class="divider"></div>
-
         <section class="team-member">
             <div class="member-info">
                 <h2>Ruchika Kumari</h2>
-                <p>Project-JRF Fellow</p>
+                <p><strong>Project-JRF</strong></p>
                 <p></p>
                 <ul>
                     <li>GATE-LS (2022)</li>
@@ -422,15 +537,13 @@
                 </ul>
             </div>
             <div class="member-image">
-                <img src="Ruchika.JPG" alt="Ruchika" class="profile-image2">
+                <img src="Ruchika.JPG" alt="Ruchika">
             </div>
         </section>
-        <div class="divider"></div>
-
         <section class="team-member">
             <div class="member-info">
                 <h2>Parthasarathi Behera</h2>
-                <p>Project-JRF</p>
+                <p><strong>Project-JRF</strong></p>
                 <p></p>
                 <ul>
                     <li>GATE-LS (2023)</li>
@@ -439,42 +552,37 @@
                 </ul>
             </div>
             <div class="member-image">
-                <img src="Parthasarathi.jpg" alt="Partha" class="profile-image2">
+                <img src="Parthasarathi.jpg" alt="Parthasarathi">
             </div>
         </section>
-        <div class="divider"></div>
-
         <section class="team-member">
             <div class="member-info">
                 <h2>Tejas Nimkar</h2>
-                <p>Project-JRF</p>
+                <p><strong>Project-JRF</strong></p>
                 <p></p>
                 <ul>
                     <li>GATE-LS (2023)</li>
                     <p>My research goal is to predict natural drugs via molecular docking studies.</p>
                 </ul>
+                </ul>
             </div>
             <div class="member-image">
-                <img src="Tejas.jpg" alt="Tejas Nimkar" class="profile-image2">
+                <img src="Tejas.jpg" alt="Tejas">
             </div>
         </section>
-        <div class="divider"></div>
-
         <section class="team-member">
             <div class="member-info">
                 <h2>Sonu Radheyshyam</h2>
-                <p>Lab-technician (MTS)</p>
+                <p><strong>Lab-technician (MTS)</strong></p>
                 <p></p>
             </div>
             <div class="member-image">
-                <img src="Sonu.jpg" alt="Sonu" class="profile-image2">
+                <img src="Sonu.jpg" alt="Tejas">
             </div>
-        </section>
-        <div class="divider"></div>
-
+            </section>
 
             <div class="team-members">
-                <section class="team-member">
+                <section class="past">
                         <ul>
                         <h3>Past Members</h3>
                         <h4>Postdoctoral Fellow</h4>
@@ -495,13 +603,9 @@
                         <li>Sukriti Chowdary - <em>University of Punjab, Chandigarh. (Summer 2019)</em></li>
                         
                     </ul>
-                        
-                   </div>
-
-                </section>
-                
+                 </div>
         </section>
-
+    </section>
     </main>
 
     <footer>
@@ -510,8 +614,10 @@
 
     <script>
         function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
+            const navLinks = document.getElementById('nav-links');
             navLinks.classList.toggle('active');
+            const hamburger = document.querySelector('.hamburger');
+            hamburger.classList.toggle('active');
         }
 
         function adjustLayout() {
@@ -546,3 +652,4 @@
     </script>
 </body>
 </html>
+In this 
