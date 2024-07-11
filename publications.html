@@ -58,8 +58,13 @@
             transition: width 0.3s ease;
         }
 
+        .header-text {
+            margin-left: 20px;
+        }
+
         nav {
             position: relative;
+            transition: all 0.3s ease;
         }
 
         .nav-links {
@@ -87,51 +92,110 @@
 
         .hamburger {
             display: none;
-            flex-direction: column;
             cursor: pointer;
         }
 
-        .bar {
-            height: 3px;
+        .hamburger-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
             width: 25px;
+            height: 20px;
+            position: relative;
+            z-index: 11;
+        }
+
+        .hamburger-inner {
+            width: 100%;
+            height: 2px;
             background-color: #333;
-            margin: 4px 0;
-            transition: 0.4s;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo {
+                margin-top: 10px;
+            }
+
+            .header-text {
+                margin-left: 0;
+                margin-top: 10px;
+                text-align: center;
+            }
+
             .nav-links {
+                display: none;
                 flex-direction: column;
                 width: 100%;
-                position: absolute;
-                top: 60px;
-                left: -100%;
+                position: static;
                 background-color: #fff;
                 transition: 0.5s;
+                border: none;
+                box-shadow: none;
+                border-radius: 0;
+                padding: 10px 0;
+                margin-top: 10px;
+            }
+
+            .nav-links.active {
+                display: flex !important;
             }
 
             .nav-links li {
                 margin: 0;
                 text-align: center;
                 width: 100%;
+                padding: 10px 0;
+                border-top: 1px solid #ccc;
             }
 
-            .nav-links.active {
-                left: 0;
+            .nav-links li:first-child {
+                border-top: none;
+            }
+
+            .nav-links a {
+                font-size: 18px;
+                display: block;
+                width: 100%;
             }
 
             .hamburger {
-                display: flex;
+                display: block;
+                margin-right: 20px;
             }
-        }
 
-        /* Main section styles */
-        main {
-            padding: 80px 20px;
-            text-align: center;
-        }
+            .hamburger.active .hamburger-inner:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
 
-        .publications {
+            .hamburger.active .hamburger-inner:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .hamburger-inner:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+            main {
+                margin-top: 0;
+                text-align: center;
+            }
+
+            .background {
+                position: relative;
+                margin: 0 auto;
+                padding: 10px;
+                width: 100%;
+                height: auto;
+                overflow: hidden;
+            }
+
+            .publications {
             max-width: 1600px;
             margin: 0 auto;
         }
@@ -139,6 +203,7 @@
         .publications h2 {
             font-size: 32px;
             margin-bottom: 20px;
+            text-align: center;
         }
 
         .publication-list {
@@ -149,7 +214,54 @@
 
         .publication-item {
             border-bottom: 1px solid #ccc;
-            padding: 20px 0;
+            padding: 50px 0;
+            margin: 0 0 20px 0;
+        }
+
+        .publication-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .publication-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .publication-details {
+            font-size: 16px;
+            color: #666;
+        }
+
+
+        }
+        /* Main section styles */
+        main {
+            padding: 80px 20px;
+            text-align: justify;
+            margin-top: 180px;
+        }
+
+        .publications {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .publications h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .publication-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .publication-item {
+            border-bottom: 1px solid #ccc;
+            padding: 50px 0;
             margin: 0 0 20px 0;
             text-align: justify;
         }
@@ -181,24 +293,6 @@
             bottom: 0;
             width: 100%;
         }
-
-                /* Responsive styles for JavaScript adjustment */
-                .mobile-nav ul {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .mobile-nav ul li {
-            margin-bottom: 10px;
-        }
-
-        .mobile-header-text {
-            font-size: 1.2em;
-        }
-
-        #research_focus {
-            margin-top: 160px; /* Adjust this value as needed based on header height */
-        } 
     </style>
 </head>
 <body>
@@ -210,11 +304,13 @@
         </div>
         <nav>
             <div class="hamburger" onclick="toggleMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                    <div class="hamburger-inner"></div>
+                    <div class="hamburger-inner"></div>
+                </div>
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="res_focus.html">Research Focus</a></li>
                 <li><a href="publications.html" class="active">Publications</a></li>
@@ -227,7 +323,6 @@
     </header>
     
     <main>
-        <main style="padding-top: 80px;"> 
         <section class="publications">
             <h2>Publications</h2>
             <ul class="publication-list">
@@ -249,11 +344,11 @@
                 </li>
                 <li class="publication-item">
                     <h3 class="publication-title">5. Cryo- EM structure of the mycobacterial 70S ribosome in complex with ribosome hibernation promotion factor RafH, reveals the unique mode of mycobacterial ribosome hibernation.</h3>
-                    <p class="publication-details">Kumar N, Sharma S, Kaushal PS (2023). <a href="https://www.biorxiv.org/content/10.1101/2023.04.18.537051v1.full" target="_blank">BioRxiv</a></p>
+                    <p class="publication-details">Kumar N, Sharma S, Mishra S, Kaushal PS (2022 May) - <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9051567/" target="_blank">Nucleic Acids Res.</a></p>
                 </li>
                 <li class="publication-item">
-                    <h3 class="publication-title">6. ResR/McdR-regulated protein translation machinery contributes to drug resilience in Mycobacterium tuberculosis.</h3>
-                    <p class="publication-details">Pal P, Khan MY, Sharma S, Kumar Y, Mangla N, Kaushal PS, Agarwal N. (2023 Jul 11) - <a href="https://www.nature.com/articles/s42003-023-05059-8" target="_blank">Commun Biol.</a></p>
+                    <h3 class="publication-title">6. Purification, crystallization, and preliminary X-ray crystallographic studies of UDP-N- acetylglucosamine pyrophosphorylase from Bacillus anthracis.</h3>
+                    <p class="publication-details">Aggarwal V, Kaushal PS, Gourinath S (2012 Nov 1) - <a href="https://journals.iucr.org/f/issues/2012/11/00/xt5002/" target="_blank">Acta Crystallogr F Struct Biol Cryst Commun.</a></p>
                 </li>
                 <li class="publication-item">
                     <h3 class="publication-title">7. Era, a GTPase-like protein of the Ras family, does not control ribosome assembly in Mycobacterium tuberculosis.</h3>
@@ -319,8 +414,6 @@
                     <h3 class="publication-title">22. Overexpression, purification, crystallization and preliminary X-ray analysis of uracil N-glycosylase from Mycobacterium tuberculosis in complex with a proteinaceous inhibitor.</h3>
                     <p class="publication-details">Singh P, Talawar RK, Krishna PD, Varshney U & Vijayan M. (2006) - <a href="https://scripts.iucr.org/cgi-bin/paper?S1744309106045805" target="_blank">Acta Crystallographica F62, 1231-4.</a></p>
                 </li>
-
-                <!-- Add more publication items as needed -->
             </ul>
         </section>
     </main>
@@ -330,14 +423,11 @@
     </footer>
 
     <script>
-       function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
-
         function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
+            const navLinks = document.getElementById('nav-links');
             navLinks.classList.toggle('active');
+            const hamburger = document.querySelector('.hamburger');
+            hamburger.classList.toggle('active');
         }
 
         function adjustLayout() {
