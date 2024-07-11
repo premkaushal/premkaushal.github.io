@@ -215,6 +215,7 @@
                 font-size: 2em; /* Adjust font size */
                 display: block;
                 text-align: center; /* Center text */
+            
             }
 
             .lab-text .big-text {
@@ -232,6 +233,50 @@
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
                 text-align: center; /* Align text to the left */
                 margin: 0 auto;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .lab-text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1; /* Ensure lab-text is above video */
+                text-align: center;
+                font-size: 60px;
+                width: 100%;
+            }
+
+            .lab-text .small-text {
+                color: darkblue;
+                font-size: 2em; /* Adjust font size */
+                display: block;
+            }
+
+            .lab-text .big-text {
+                color: cyan;
+                font-size: 4em; /* Adjust font size */
+                display: block;
+                margin-top: -0.5em; /* Adjust to align with the smaller text */
+            }
+
+            .background {
+                position: relative;
+                margin: 0 auto;
+                padding: 10px;
+                width: 100%;
+                height: auto; /* Set height to auto for responsive behavior */
+                overflow: hidden; /* Hide overflow to prevent scrollbars */
+            }
+
+            #background-video {
+                width: 100%;
+                height: auto; /* Set height to auto for responsive behavior */
+                max-width: 100%; /* Ensure video does not exceed container width */
+                display: block; /* Ensure video is displayed */
+                margin: 0 auto; /* Center video horizontally */
+                z-index: 0; /* Ensure video is behind lab-text */
             }
         }
 
