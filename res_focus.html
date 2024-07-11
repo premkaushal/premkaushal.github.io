@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Kaushal Lab</title>
+    <title>The Kaushal Lab - Research Focus</title>
     <style>
         /* Reset default margin and padding */
         body, h1, h2, h3, h4, h5, p, ul, li {
@@ -58,8 +58,13 @@
             transition: width 0.3s ease;
         }
 
+        .header-text {
+            margin-left: 20px;
+        }
+
         nav {
             position: relative;
+            transition: all 0.3s ease;
         }
 
         .nav-links {
@@ -87,41 +92,123 @@
 
         .hamburger {
             display: none;
-            flex-direction: column;
             cursor: pointer;
         }
 
-        .bar {
-            height: 3px;
+        .hamburger-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
             width: 25px;
+            height: 20px;
+            position: relative;
+            z-index: 11;
+        }
+
+        .hamburger-inner {
+            width: 100%;
+            height: 2px;
             background-color: #333;
-            margin: 4px 0;
-            transition: 0.4s;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo {
+                margin-top: 10px;
+            }
+
+            .header-text {
+                margin-left: 0;
+                margin-top: 10px;
+                text-align: center;
+            }
+
             .nav-links {
+                display: none;
                 flex-direction: column;
                 width: 100%;
-                position: absolute;
-                top: 60px;
-                left: -100%;
+                position: static;
                 background-color: #fff;
                 transition: 0.5s;
+                border: none;
+                box-shadow: none;
+                border-radius: 0;
+                padding: 10px 0;
+                margin-top: 10px;
+            }
+
+            .nav-links.active {
+                display: flex !important;
             }
 
             .nav-links li {
                 margin: 0;
                 text-align: center;
                 width: 100%;
+                padding: 10px 0;
+                border-top: 1px solid #ccc;
             }
 
-            .nav-links.active {
-                left: 0;
+            .nav-links li:first-child {
+                border-top: none;
+            }
+
+            .nav-links a {
+                font-size: 18px;
+                display: block;
+                width: 100%;
             }
 
             .hamburger {
-                display: flex;
+                display: block;
+                margin-right: 20px;
+            }
+
+            .hamburger.active .hamburger-inner:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .hamburger.active .hamburger-inner:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .hamburger-inner:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+            main {
+                margin-top: 0;
+                text-align: center;
+            }
+
+            .background {
+                position: relative;
+                margin: 0 auto;
+                padding: 10px;
+                width: 100%;
+                height: auto;
+                overflow: hidden;
+            }
+
+            .research-theme h2 {
+                font-size: 35px;
+                text-align: center;
+            }
+
+            .research-theme h3 {
+                font-size: 20px;
+                text-align: center;
+            }
+
+            .research-theme p {
+                font-size: 16px;
+                text-align: left;
+                padding: 0 10px;
             }
         }
 
@@ -129,6 +216,7 @@
         main {
             padding: 80px 20px;
             text-align: center;
+            margin-top: 180px;
         }
 
         .research-theme {
@@ -137,9 +225,9 @@
         }
 
         .research-theme h2 {
-            font-size: 45px;
-            padding-top: 10px;
-            margin-top: 20px;
+            font-size: 40px;
+            padding-top: 8px;
+            margin-top: 18px;
         }
 
         .research-theme h3 {
@@ -150,9 +238,9 @@
         }
 
         .research-theme p {
-            font-size: 18px;
+            font-size: 17px;
             margin-bottom: 20px;
-            text-align: left;
+            text-align: justify;
         }
 
         /* Footer styles */
@@ -166,20 +254,6 @@
             bottom: 0;
             width: 100%;
         }
-
-        /* Responsive styles for JavaScript adjustment */
-        .mobile-nav ul {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .mobile-nav ul li {
-            margin-bottom: 10px;
-        }
-
-        .mobile-header-text {
-            font-size: 1.2em;
-        }
     </style>
 </head>
 <body>
@@ -191,11 +265,13 @@
         </div>
         <nav>
             <div class="hamburger" onclick="toggleMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                    <div class="hamburger-inner"></div>
+                    <div class="hamburger-inner"></div>
+                </div>
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="res_focus.html" class="active">Research Focus</a></li>
                 <li><a href="publications.html">Publications</a></li>
@@ -218,10 +294,8 @@
             <p><em>Entamoeba histolytica</em> is an anaerobic parasite responsible for amebiasis, an intestinal infection that results in bloody diarrhea and liver abscesses. Amoebiasis is more predominant in tropical areas with poor sanitation conditions, including India. Therefore, amoebiasis puts a huge economic burden on our country. We aim to determine the high - resolution cryo - EM structure of <em>E. histolytica</em> ribosome and identify protozoan - specific unique aspects of its protein synthesis machinery. Exploits these unique features to design protozoan specific inhibitors using a structure - based drug design approach.</p>
             <h3>Ribosome biogenesis</h3>
             <p>The ribosomes are the ribonucleoprotein (RNP) complexes of mega Dalton (MDa) sizes that decodes mRNA into protein. Each ribosome comprises two subunits, a large subunit (LSU), which harbors peptidyl transferase centre (PTC) where peptide bond formation takes place, and a small subunit (SSU), on which the decoding of mRNA sequence occurs. Both subunits, LSU and SSU, join to form a functional 70S or 80S ribosome. Ribosome biogenesis involves synthesizing, processing, and modifying individual components: rRNAs and ribosomal proteins (RPs), and their assembly. Defects in ribosome assembly, the ribosomopathy, are associated with various diseases such as cancer, age-related degenerative diseases and aging. Our goal is to understand the ribosome biogenesis process by depleting the ribosome biogenesis factors and trapping ribosomes in an intermediate stage using cryo - EM.</p>
-            <h3>Cryo-EM</h3>
-            <p>Cryo-EM is a fast-emerging powerful technique in modern biology for solving the structure of biomolecules at near-atomic resolution. It uses very little sample at cold temperature (liquid nitrogen) to visualize the macromolecular complex in its native state without distorting the molecule's structure. Recent advancements in image-processing algorithms and electron detector technology made it possible to achieve atomic resolution. With respect to other techniques, cryo-EM covers a range of biomolecules and sample conditions. The recent cryo-EM structures of complexes with drug molecules have further proven the power of this technique to visualize the binding sites of drug molecules and its application in structure-based drug design.</p>
-            <h3>X-ray crystallography</h3>
-            <p>X-ray crystallography remains the most powerful technique for the determining the molecular and atomic structure of proteins and biological macromolecules over a century. The high-resolution atomic coordinate obtained from the X-ray crystal structure helps to solve the unanswered mystery and provides a platform for elucidating enzyme mechanisms, specificity of protein-ligand interactions, site-directed mutagenesis, and structure-based drug design.</p>
+            <h3>Mechanism of Mitoribosome Assembly</h3>
+            <p>Unlike bacterial and cytosolic ribosomes, the mitochondrial ribosomes (mitoribosomes) synthesize only a few proteins encoded by mitochondrial genes. Most of these proteins are the central subunits of the oxidative phosphorylation system (OXPHOS), which are inserted back into the inner mitochondrial membrane to form electron transport chain (ETC). Thus, mitoribosomes are an essential component of the energy-producing system of eukaryotic cells. We aim to understand the mechanism of mitoribosome assembly, which is distinct from bacterial and cytosolic ribosome assembly using cryo - EM. A mechanistic understanding of mitoribosome biogenesis is important in various diseases such as cancer and neurodegenerative diseases.</p>
         </section>
     </main>
     
@@ -231,8 +305,10 @@
 
     <script>
         function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
+            const navLinks = document.getElementById('nav-links');
             navLinks.classList.toggle('active');
+            const hamburger = document.querySelector('.hamburger');
+            hamburger.classList.toggle('active');
         }
 
         function adjustLayout() {
