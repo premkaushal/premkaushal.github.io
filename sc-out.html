@@ -58,6 +58,10 @@
             transition: width 0.3s ease;
         }
 
+        .header-text {
+            margin-left: 20px;
+        }
+
         nav {
             position: relative;
         }
@@ -87,46 +91,131 @@
 
         .hamburger {
             display: none;
-            flex-direction: column;
             cursor: pointer;
         }
 
-        .bar {
-            height: 3px;
+        .hamburger-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
             width: 25px;
-            background-color: #333;
-            margin: 4px 0;
-            transition: 0.4s;
+            height: 20px;
+            position: relative;
+            z-index: 11;
         }
 
-        @media (max-width: 768px) {
+        .hamburger-inner {
+            width: 100%;
+            height: 2px;
+            background-color: #333;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+
+ @media (max-width: 768px) {
+        .description p {
+                font-size: 16px;
+                padding: 8px;
+                width: auto;
+                left: 0;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo {
+                margin-top: 10px;
+            }
+
+            .header-text {
+                margin-left: 0;
+                margin-top: 10px;
+                text-align: center;
+            }
+
             .nav-links {
+                display: none;
                 flex-direction: column;
                 width: 100%;
-                position: absolute;
-                top: 60px;
-                left: -100%;
+                position: static;
                 background-color: #fff;
                 transition: 0.5s;
+                border: none;
+                box-shadow: none;
+                border-radius: 0;
+                padding: 10px 0;
+                margin-top: 10px;
+            }
+
+            .nav-links.active {
+                display: flex !important;
             }
 
             .nav-links li {
                 margin: 0;
                 text-align: center;
                 width: 100%;
+                padding: 10px 0;
+                border-top: 1px solid #ccc;
             }
 
-            .nav-links.active {
-                left: 0;
+            .nav-links li:first-child {
+                border-top: none;
+            }
+
+            .nav-links a {
+                font-size: 18px;
+                display: block;
+                width: 100%;
             }
 
             .hamburger {
-                display: flex;
+                display: block;
+                margin-right: 20px;
             }
-        }
+
+            .hamburger.active .hamburger-inner:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .hamburger.active .hamburger-inner:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .hamburger-inner:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+            main {
+                margin-top: 0;
+                text-align: center;
+            }
+
+            .background {
+                position: relative;
+                margin: 0 auto;
+                padding: 10px;
+                width: 100%;
+                height: auto;
+                overflow: hidden;
+            }
+
+            .description p {
+        font-size: 16px;
+        padding: 8px;
+        max-width: 90%; /* Adjust to fit within the screen */
+        margin: 0 auto; /* Center align */
+        text-align: justify; /* Justify text to avoid uneven spacing */
+    }
+
+}
 
         main {
-            padding: 1%;
+            padding: 80px 20px;
+            text-align: center;
+            margin-top: 180px;
         }
 
         .gallery {
@@ -182,15 +271,18 @@
         .description p {
             position: relative;
             bottom: 0;
-            left: -20%;
-            width: 155%;
+            left: 0;
+            width: auto;
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
             padding: 10px;
             box-sizing: border-box;
             box-shadow: lightslategray;
             border-radius: 4px;
-            font-size: 22px;
+            font-size: 18px;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 100%;
         }
 
         .gallery1 {
@@ -243,10 +335,6 @@
             margin-bottom: 10px;
         }
 
-        .mobile-header-text {
-            font-size: 1.2em;
-        }
-
         #research_focus {
             margin-top: 160px; /* Adjust this value as needed based on header height */
         }
@@ -261,11 +349,13 @@
         </div>
         <nav>
             <div class="hamburger" onclick="toggleMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                    <div class="hamburger-inner"></div>
+                    <div class="hamburger-inner"></div>
+                </div>
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="res_focus.html" class="active">Research Focus</a></li>
                 <li><a href="publications.html">Publications</a></li>
@@ -278,13 +368,13 @@
     </header>
 
     <main>
-        <main style="padding-top: 195px;">
+ 
         <div class="gallery">
             <div class="image-container">
-                <img src="s-o_1.1.jpg" alt="Image 1">
+                <img src="/home/prem/Documents/Demo/website/s-o_1.1.jpg" alt="Image 1">
             </div>
             <div class="image-container">
-                <img src="s-o_1.2.jpg" alt="Image 2">
+                <img src="/home/prem/Documents/Demo/website/s-o_1.2.jpg" alt="Image 2">
             </div>
             <div class="description">
                 <p>Delivered a talk titled “Career Prospects in Biotechnology Research” at Manav Rachna International Institute of Research and Studies, Faridabad, on 17th August 2023.</p>
@@ -294,18 +384,18 @@
         <div class="gallery">
             <div class="image-row2">
                 <div class="image-container1">
-                    <img src="s-o_2.1.jpg" alt="Image 1" class="zoom">
+                    <img src="/home/prem/Documents/Demo/website/s-o_2.1.jpg" alt="Image 1" class="zoom">
                 </div>
                 <div class="image-container1">
-                    <img src="s-o_2.2.jpg" alt="Image 2" class="zoom">
+                    <img src="/home/prem/Documents/Demo/website/s-o_2.2.jpg" alt="Image 2" class="zoom">
                 </div>
             </div>
             <div class="image-row2">
                 <div class="image-container1">
-                    <img src="s-o_2.3.jpg" alt="Image 3" class="zoom">
+                    <img src="/home/prem/Documents/Demo/website/s-o_2.3.jpg" alt="Image 3" class="zoom">
                 </div>
                 <div class="image-container1">
-                    <img src="s-o_2.4.jpg" alt="Image 4" class="zoom">
+                    <img src="/home/prem/Documents/Demo/website/s-o_2.4.jpg" alt="Image 4" class="zoom">
                 </div>
             </div>
             <div class="description">
@@ -315,7 +405,7 @@
     
         <div class="gallery">
             <div class="image-container2">
-                <img src="s-o_3.1.jpg" alt="Image 1">
+                <img src="/home/prem/Documents/Demo/website/s-o_3.1.jpg" alt="Image 1">
             </div>
             <div class="description">
                 <p>Delivered a webinar on “Life and work of the great Indian scientist Professor G.N. Ramachandran” on July 23, 2021, organized by RCB, Faridabad, as a part of Science Setu to commemorate the 75th Year of Indian Independence.
@@ -326,10 +416,10 @@
     
         <div class="gallery">
             <div class="image-container">
-                <img src="s-o_4.1.jpg" alt="Image 1">
+                <img src="/home/prem/Documents/Demo/website/s-o_4.1.jpg" alt="Image 1">
             </div>
             <div class="image-container">
-                <img src="s-o_4.2.jpg" alt="Image 2">
+                <img src="/home/prem/Documents/Demo/website/s-o_4.2.jpg" alt="Image 2">
             </div>
             <div class="description">
                 <p>Delivered a webinar on "Opportunities & fellowships in India to pursue research as a career option" organized by the Department of Higher Education, Kullu, HP, on September 27, 2020.
@@ -340,7 +430,7 @@
     
         <div class="gallery">
             <div class="image-container2">
-                <img src="s-o_5.1.jpg" alt="Image 1">
+                <img src="/home/prem/Documents/Demo/website/s-o_5.1.jpg" alt="Image 1">
             </div>
             <div class="description">
                 <p>Invited to NEWS PLUS TV studio on July 29, 2020, and provided information on various fellowships available to pursue research a career option.
@@ -355,8 +445,10 @@
 
     <script>
         function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
+            const navLinks = document.getElementById('nav-links');
             navLinks.classList.toggle('active');
+            const hamburger = document.querySelector('.hamburger');
+            hamburger.classList.toggle('active');
         }
 
         function adjustLayout() {
@@ -391,3 +483,4 @@
     </script>
 </body>
 </html>
+
