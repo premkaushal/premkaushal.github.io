@@ -18,6 +18,7 @@
             background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
+            margin: 0;
         }
 
         /* Header styles */
@@ -32,11 +33,12 @@
             z-index: 10;
             position: fixed;
             top: 0;
-            transition: padding 0.3s ease;
+            transition: padding 0.3s ease, height 0.3s ease; /* Add height transition */
         }
 
         .header-shrink {
             padding: 0.1% 0.5%;
+            height: auto; /* Reset height to auto */
         }
 
         .header-shrink .logo {
@@ -58,8 +60,13 @@
             transition: width 0.3s ease;
         }
 
+        .header-text {
+            margin-left: 20px; /* Adjust margin as needed */
+        }
+
         nav {
             position: relative;
+            transition: all 0.3s ease;
         }
 
         .nav-links {
@@ -86,42 +93,145 @@
         }
 
         .hamburger {
-            display: none;
-            flex-direction: column;
+            display: none; /* Hide hamburger menu by default */
             cursor: pointer;
         }
 
-        .bar {
-            height: 3px;
+        .hamburger-box {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
             width: 25px;
+            height: 20px;
+            position: relative;
+            z-index: 11;
+        }
+
+        .hamburger-inner {
+            width: 100%;
+            height: 2px;
             background-color: #333;
-            margin: 4px 0;
-            transition: 0.4s;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center; /* Center items horizontally */
+            }
+
+            .logo {
+                margin-top: 10px; /* Adjust margin as needed */
+            }
+
+            .header-text {
+                margin-left: 0; /* Adjust margin as needed */
+                margin-top: 10px; /* Adjust margin as needed */
+                text-align: center; /* Center text on small screens */
+            }
+
             .nav-links {
+                display: none; /* Hide nav links by default */
                 flex-direction: column;
                 width: 100%;
-                position: absolute;
-                top: 60px;
-                left: -100%;
+                position: static;
                 background-color: #fff;
                 transition: 0.5s;
+                border: none;
+                box-shadow: none;
+                border-radius: 0;
+                padding: 10px 0;
+                margin-top: 10px; /* Adjust margin as needed */
+            }
+
+            .nav-links.active {
+                display: flex !important; /* Display nav links when active */
             }
 
             .nav-links li {
                 margin: 0;
                 text-align: center;
                 width: 100%;
+                padding: 10px 0;
+                border-top: 1px solid #ccc;
             }
 
-            .nav-links.active {
-                left: 0;
+            .nav-links li:first-child {
+                border-top: none;
+            }
+
+            .nav-links a {
+                font-size: 18px;
+                display: block;
+                width: 100%;
             }
 
             .hamburger {
-                display: flex;
+                display: block; /* Display hamburger menu on small screens */
+                margin-right: 20px; /* Adjust margin as needed */
+            }
+
+            .hamburger.active .hamburger-inner:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .hamburger.active .hamburger-inner:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .hamburger-inner:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+            main {
+                margin-top: 0; /* Remove margin top to align with header */
+                text-align: center; /* Center text on small screens */
+            }
+
+            .background {
+                position: relative;
+                margin: 0 auto;
+                padding: 10px;
+                width: 100%;
+                height: auto; /* Set height to auto for responsive behavior */
+                overflow: hidden; /* Hide overflow to prevent scrollbars */
+            }
+
+            #background-video {
+                width: 100%;
+                height: auto; /* Set height to auto for responsive behavior */
+                max-width: 100%; /* Ensure video does not exceed container width */
+                display: block; /* Ensure video is displayed */
+                margin: 0 auto; /* Center video horizontally */
+            }
+
+            .lab-text {
+                text-align: center; /* Center text */
+                padding: 20px; /* Add padding for spacing */
+            }
+
+            .lab-text .small-text {
+                color: darkblue;
+                font-size: 2em; /* Adjust font size */
+                display: block;
+                text-align: center; /* Center text */
+            }
+
+            .lab-text .big-text {
+                color: cyan;
+                font-size: 4em; /* Adjust font size */
+                display: block;
+                margin-top: -0.5em; /* Adjust to align with the smaller text */
+                text-align: center; /* Center text */
+            }
+
+            .theme {
+                background-color: rgba(255, 255, 255, 0.8); /* Adjust background color and opacity */
+                padding: 20px; /* Add padding for spacing */
+                border-radius: 10px; /* Add border radius */
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
+                text-align: center; /* Align text to the left */
+                margin: 0 auto;
             }
         }
 
@@ -129,52 +239,30 @@
         main {
             padding: 80px 20px;
             text-align: center;
-        }
-
-        .theme p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .background {
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-        }
-
-        #background-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            margin-top: 180px; /* Adjust margin to account for header and logo */
         }
 
         .lab-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: left;
-            z-index: 1; /* Ensure the text appears above the video */
-        }
+                text-align: center; /* Center text */
+                padding: 20px; /* Add padding for spacing */
+            }
 
-        .lab-text .small-text {
-            color: darkblue;
-            font-size: 4em; /* Adjust as needed */
-            display: block;
-            text-align: left;
-        }
+            .lab-text .small-text {
+                color: darkblue;
+                font-size: 2em; /* Adjust font size */
+                display: block;
+                text-align: center; /* Center text */
+            }
 
-        .lab-text .big-text {
-            color: cyan;
-            font-size: 10em; /* Adjust as needed */
-            display: block;
-            margin-top: -0.5em; /* Adjust to align with the smaller text */
-            text-align: left;
-        }
+            .lab-text .big-text {
+                color: cyan;
+                font-size: 4em; /* Adjust font size */
+                display: block;
+                margin-top: -0.5em; /* Adjust to align with the smaller text */
+                text-align: center; /* Center text */
+            }
+
+
 
         /* Footer styles */
         footer {
@@ -187,24 +275,6 @@
             bottom: 0;
             width: 100%;
         }
-
-        /* Responsive styles for JavaScript adjustment */
-        .mobile-nav ul {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .mobile-nav ul li {
-            margin-bottom: 10px;
-        }
-
-        .mobile-header-text {
-            font-size: 1.2em;
-        }
-
-        #research_focus {
-            margin-top: 160px; /* Adjust this value as needed based on header height */
-        }
     </style>
 </head>
 <body>
@@ -216,11 +286,13 @@
         </div>
         <nav>
             <div class="hamburger" onclick="toggleMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                    <div class="hamburger-inner"></div>
+                    <div class="hamburger-inner"></div>
+                </div>
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="res_focus.html" class="active">Research Focus</a></li>
                 <li><a href="publications.html">Publications</a></li>
@@ -234,21 +306,19 @@
     
     <main>
         <div class="background">
+            <video autoplay loop muted id="background-video">
+                <source src="movie1homepage.mp4" type="video/mp4">
+            </video>
             <div class="lab-text">
                 <span class="small-text">The</span>
                 <span class="big-text">Kaushal Lab</span>
             </div>
-            <video autoplay loop muted id="background-video">
-                <source src="movie1homepage.mp4" type="video/mp4">
-            </video>
         </div>
-        <section id="research_focus">
-            <div class="theme">
-                <p>Our laboratory's research goal is to unravel the structural basis of the functioning of macromolecular complexes involved in translation regulation and ribosome assembly, thereby identifying potential drug targets. 
-                Translation, the process of protein synthesis in which genetic information present in mRNA is decoded into a polypeptide, occurs on the ribosome in all cells. Protein synthesis is one of the most energy-consuming cellular processes, 
-                consuming nearly 50% of the cell's energy, and the ribosome is a target of nearly 40% of known antibiotics. We focus on understanding the structural aspects of translation regulation in <em>Mycobacterium tuberculosis</em> under different stresses and how a mega Dalton protein synthesis machinery, the ribosome, assembles inside the cell. We apply the structural biology tool cryo-electron microscopy alongside molecular biology and biochemistry techniques.
-                </p>
-            </div>
+        <section class="theme" id="research_focus">
+            <p>Our laboratory's research goal is to unravel the structural basis of the functioning of macromolecular complexes involved in translation regulation and ribosome assembly, thereby identifying potential drug targets. 
+            Translation, the process of protein synthesis in which genetic information present in mRNA is decoded into a polypeptide, occurs on the ribosome in all cells. Protein synthesis is one of the most energy-consuming cellular processes, 
+            consuming nearly 50% of the cell's energy, and the ribosome is a target of nearly 40% of known antibiotics. We focus on understanding the structural aspects of translation regulation in <em>Mycobacterium tuberculosis</em> under different stresses and how a mega Dalton protein synthesis machinery, the ribosome, assembles inside the cell. We apply the structural biology tool cryo-electron microscopy alongside molecular biology and biochemistry techniques.
+            </p>
         </section>
     </main>
     
@@ -257,41 +327,49 @@
     </footer>
 
     <script>
+        // Function to toggle mobile navigation menu
         function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
+            const navLinks = document.getElementById('nav-links');
             navLinks.classList.toggle('active');
+            const hamburger = document.querySelector('.hamburger');
+            hamburger.classList.toggle('active');
         }
 
-        function adjustLayout() {
-            const nav = document.querySelector('nav ul');
-            const headerText = document.querySelector('.header-text');
+        // Adjust video size on window resize
+        window.addEventListener('resize', function() {
+            const video = document.getElementById('background-video');
+            const aspectRatio = 16 / 9; // Desired aspect ratio (16:9)
             const screenWidth = window.innerWidth;
 
             if (screenWidth < 768) {
-                nav.classList.add('mobile-nav');
-                headerText.classList.add('mobile-header-text');
+                // Calculate new height based on screen width and aspect ratio
+                video.style.height = `${screenWidth / aspectRatio}px`;
             } else {
-                nav.classList.remove('mobile-nav');
-                headerText.classList.remove('mobile-header-text');
+                // Reset video height for larger screens
+                video.style.height = '';
             }
-        }
+        });
 
-        // Adjust layout on page load
-        window.addEventListener('load', adjustLayout);
-
-        // Adjust layout on window resize
-        window.addEventListener('resize', adjustLayout);
+        // Call resize function on page load
+        window.addEventListener('load', function() {
+            window.dispatchEvent(new Event('resize'));
+        });
 
         // Add scroll event listener to reduce header padding and logo size
+        let lastScrollTop = 0;
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
-            if (window.scrollY > 50) {
+            const scrollTop = window.scrollY;
+
+            if (scrollTop > lastScrollTop) {
+                // Scroll down
                 header.classList.add('header-shrink');
             } else {
+                // Scroll up
                 header.classList.remove('header-shrink');
             }
+            lastScrollTop = scrollTop;
         });
     </script>
 </body>
 </html>
-
